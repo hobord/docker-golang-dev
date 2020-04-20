@@ -45,7 +45,7 @@ RUN chown -R ${USERNAME}:${USERNAME} /golang \
 
 # VIM
 USER ${USERNAME} 
-COPY --chown=${USERNAME}:${USERNAME} profile /home/${USERNAME}
+COPY --chown=${USER_GID}:${USER_GID} profile /home/${USERNAME}
 RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
     && vim +PlugInstall +qall 2> /dev/null 1>/dev/null
 
