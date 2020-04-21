@@ -22,11 +22,6 @@ RUN ./configure \
 	--enable-fail-if-missing \
     && make VIMRUNTIMEDIR=/usr/local/share/vim/vim82 \
     && make install
-# update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
-# update-alternatives --set editor /usr/local/bin/vim
-# update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
-# update-alternatives --set vi /usr/local/bin/vim
-
 
 
 FROM ubuntu:focal

@@ -7,6 +7,7 @@ Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 Plug 'shougo/neocomplete.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -132,7 +133,7 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " NERDTree plugin specific commands
 :nnoremap <C-g> :NERDTreeToggle<CR>
-"autocmd vimenter * NERDTree
+autocmd vimenter * NERDTree
 
 
 " air-line plugin specific commands
