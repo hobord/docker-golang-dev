@@ -13,6 +13,20 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'mbbill/undotree'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-git'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'rhysd/vim-gfm-syntax'
+Plug 'MTDL9/vim-log-highlighting'
+Plug 'Shougo/defx.nvim'
+Plug 'mbbill/undotree'
+Plug 'reedes/vim-wordy'
+Plug 'brooth/far.vim'
+Plug 'Shougo/vinarise.vim'
+Plug 'mzlogin/vim-markdown-toc'
+Plug 'sheerun/vim-polyglot'
+
+
 
 " all of your Plugins must be added before the following line
 call plug#end()            " required
@@ -26,6 +40,11 @@ set cursorline
 set scrolloff=999
 set encoding=utf-8
 colorscheme molokai
+" Flash screen instead of beep sound
+set visualbell
+" Set the encoding of files written
+set fileencoding=utf-8
+set backspace=indent,eol,start
 
 " plugin customizations
 " neocomplete
@@ -47,6 +66,7 @@ let g:bufferline_echo = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'dark'
 
+autocmd Filetype go setlocal tabstop=4 shiftwidth=4 softtabstop=4
 " tagbar
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
@@ -76,6 +96,8 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
+" Status line types/signatures.
+let g:go_auto_type_info = 1
 
 " shortcuts remap
 nmap <F2> :tabnew<CR>
@@ -106,3 +128,39 @@ au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 " rename the identifier under the cursor to a new name
 au FileType go nmap <Leader>e <Plug>(go-rename)
+
+
+" NERDTree plugin specific commands
+:nnoremap <C-g> :NERDTreeToggle<CR>
+"autocmd vimenter * NERDTree
+
+
+" air-line plugin specific commands
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
