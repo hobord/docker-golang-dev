@@ -37,7 +37,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
     && chmod 0440 /etc/sudoers.d/${USERNAME} \
     && chmod g+rw /home
-COPY --chown=${USER_UID}:${USER_GID} --from=hobord/golang-dev /golang /golang
+COPY --chown=1000:1000 --from=hobord/golang-dev /golang /golang
 
 RUN chown -R ${USERNAME}:${USERNAME} /golang \
     && mkdir -p /workspace \
@@ -45,7 +45,7 @@ RUN chown -R ${USERNAME}:${USERNAME} /golang \
 
 # VIM
 USER ${USERNAME} 
-COPY --chown=${USER_UID}:${USER_GID} profile /home/${USERNAME}
+COPY --chown=1000:1000 profile /home/${USERNAME}
 RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
     && vim +PlugInstall +qall 2> /dev/null 1>/dev/null
 
