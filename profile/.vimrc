@@ -26,7 +26,7 @@ Plug 'brooth/far.vim'
 Plug 'Shougo/vinarise.vim'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'sheerun/vim-polyglot'
-
+Plug 'morhetz/gruvbox'
 
 
 " all of your Plugins must be added before the following line
@@ -40,12 +40,22 @@ set number
 set cursorline
 set scrolloff=999
 set encoding=utf-8
-colorscheme molokai
+
+colorscheme gruvbox
+set background=dark
+" fix scroll black background issue
+set t_ut=
+
 " Flash screen instead of beep sound
+"
+"
 set visualbell
 " Set the encoding of files written
 set fileencoding=utf-8
 set backspace=indent,eol,start
+
+" higlight search
+:noremap <F4> :set hlsearch! hlsearch?<CR>
 
 " plugin customizations
 " neocomplete
