@@ -3,7 +3,6 @@ set nocompatible              " be iMproved
 call plug#begin()
 
 " custom plugins
-Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 Plug 'shougo/neocomplete.vim'
 Plug 'scrooloose/nerdtree'
@@ -28,6 +27,24 @@ Plug 'mzlogin/vim-markdown-toc'
 Plug 'sheerun/vim-polyglot'
 Plug 'morhetz/gruvbox'
 
+"==========
+"| GOLANG |
+"====================
+Plug 'fatih/vim-go'
+"=====================
+
+"==============
+"| TypeScript |
+"===================================================================\
+"https://medium.com/swlh/ultimate-vim-typescript-setup-35b5ac5c8c4e  |
+"-------------------------------------------------------------------/
+"Plug 'pangloss/vim-javascript'    " JavaScript support
+"Plug 'leafgarland/typescript-vim' " TypeScript syntax
+"Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+"Plug 'jparise/vim-graphql'        " GraphQL syntax
+"Plug 'neoclide/coc.nvim' , { 'branch' : 'release' } " Code completions
+"let g:coc_global_extensions = [ 'coc-tsserver' ]
+"=============================================================================
 
 " all of your Plugins must be added before the following line
 call plug#end()            " required
@@ -46,6 +63,10 @@ set background=dark
 " fix scroll black background issue
 set t_ut=
 
+" Recursive search
+set path+=**
+
+
 " Flash screen instead of beep sound
 "
 "
@@ -56,6 +77,11 @@ set backspace=indent,eol,start
 
 " higlight search
 :noremap <F4> :set hlsearch! hlsearch?<CR>
+
+" find in subdirectories
+set path+=**
+" Display all found files in tabs
+"set wildmenu
 
 " plugin customizations
 " neocomplete
@@ -143,7 +169,7 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " NERDTree plugin specific commands
 :nnoremap <C-g> :NERDTreeToggle<CR>
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 
 
 " air-line plugin specific commands
