@@ -83,7 +83,7 @@ COPY --chown=1000:1000 --from=hobord/golang-dev /golang /golang
 # create user profile
 USER ${USERNAME} 
 COPY --chown=1000:1000 profile /home/${USERNAME}
-RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
+RUN curl -fLo /home/${USERNAME}/.vim/autoload/plug.vim --create-dirs http://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
     && vim +PlugInstall +qall 2> /dev/null 1>/dev/null 
 
 WORKDIR /workspace
