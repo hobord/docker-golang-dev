@@ -26,7 +26,7 @@ RUN ./configure \
 
 FROM ubuntu:focal
 ENV DEBIAN_FRONTEND=noninteractive
-ARG GO_VERSION=1.14.3
+ARG GO_VERSION=1.14.4
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
 ENV GO_VERSION=$GO_VERSION \
@@ -40,7 +40,6 @@ ENV USERNAME=gropher
 # VIM
 COPY --from=vim /usr/local /usr/local
 
-# install Go
 WORKDIR /tmp/
 RUN apt-get update \
     && apt-get remove vim vim-runtime vim-tiny vim-common \
@@ -79,6 +78,7 @@ RUN apt-get update \
     && mkdir -p /workspace \
     && chown -R ${USERNAME}:${USERNAME} /workspace
 
+# install Go
 COPY --chown=1000:1000 --from=hobord/golang-dev /golang /golang
 
 # create user profile
