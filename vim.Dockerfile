@@ -46,6 +46,7 @@ RUN apt-get update \
     && apt-get remove vim vim-runtime vim-tiny vim-common \
     && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
     && apt-get -y install --no-install-recommends \
+        ca-certificates \
         iblua5.3-0 \
         libpython3.8 \
         git \
