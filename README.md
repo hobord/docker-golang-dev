@@ -3,7 +3,7 @@ GOLANG-DEV
 
 Golang development environment with tools for multistage build.
 
-ARG GO_VERSION=1.14.1
+ARG GO_VERSION=1.14.4
 
 path:
 

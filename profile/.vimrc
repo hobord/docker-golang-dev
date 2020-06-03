@@ -142,8 +142,14 @@ nmap <F3> :tabclose<CR>
 nmap <F5> :UndotreeToggle<CR>
 nmap <F7> :NERDTreeTabsToggle<CR>
 nmap <F8> :TagbarToggle<CR>
-nmap <C-Left> :tabprevious<CR>
-nmap <C-Right> :tabnext<CR>
+nmap <A-PageDown> :tabprevious<CR>
+nmap <A-PageUp> :tabnext<CR>
+nnoremap <A-Right> :bnext<CR>
+nnoremap <A-Left> :bprevious<CR>
+nmap <C-Down> :split<CR>
+nmap <C-Right> :vsp<CR>
+nnoremap <C-Up> <C-w>w
+nnoremap <C-Left> <C-w>c
 
 " show a list of interfaces which is implemented by the type under your cursor
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -169,6 +175,7 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " NERDTree plugin specific commands
 :nnoremap <C-g> :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen=1
 " autocmd vimenter * NERDTree
 
 
@@ -201,3 +208,4 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
