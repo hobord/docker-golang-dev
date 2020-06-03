@@ -53,6 +53,7 @@ RUN apt-get update \
         telnet \
         iputils-ping \
         curl \
+		ctags \
         netcat \
         dnsutils \
         procps \
