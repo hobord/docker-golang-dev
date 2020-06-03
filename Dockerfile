@@ -44,7 +44,8 @@ RUN mkdir -p /golang \
         github.com/godoctor/godoctor@latest  \
         github.com/rogpeppe/godef@latest  \
         github.com/zmb3/gogetdoc@latest \
-        github.com/fatih/gomodifytags@latest  \
+        github.com/fatih/gomodifytags@latest \
+		github.com/jstemmer/gotags@latest \
         github.com/mgechev/revive@latest  \
         github.com/go-delve/delve/cmd/dlv@latest 2>&1 \
     && GO111MODULE=off go get github.com/uudashr/gopkgs/v2/cmd/gopkgs 2>&1 \
