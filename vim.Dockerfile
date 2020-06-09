@@ -49,6 +49,7 @@ RUN apt-get update \
         iblua5.3-0 \
         libpython3.8 \
         git \
+		make \
         iproute2 \
         telnet \
         iputils-ping \

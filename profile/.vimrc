@@ -150,10 +150,10 @@ nmap <C-Down> :split<CR>
 nmap <C-Right> :vsp<CR>
 nnoremap <C-Up> <C-w>w
 nnoremap <C-Left> <C-w>c
-nmap <C-a> <C-w><
-nmap <C-d> <C-w>>
-nmap <C-w> <C-w>+
-nmap <C-s> <C-w>-
+"nmap <C-a> <C-w><
+"nmap <C-d> <C-w>>
+"nmap <C-w> <C-w>+
+"nmap <C-s> <C-w>-
 " show a list of interfaces which is implemented by the type under your cursor
 au FileType go nmap <Leader>s <Plug>(go-implements)
 " show type info for the word under your cursor

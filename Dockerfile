@@ -18,7 +18,8 @@ RUN apt-get update \
         curl \
         jq \
         unzip \
-        # Clean up
+		make \
+		# Clean up
     && apt-get autoremove -y \
     && apt-get clean -y
 
