@@ -24,6 +24,7 @@ RUN apt-get update \
         netcat \
         telnet \
         dnsutils \
+		gcc \
         jq \
 # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
     && groupadd --gid $USER_GID $USERNAME \
