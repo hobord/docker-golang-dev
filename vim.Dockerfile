@@ -50,6 +50,7 @@ RUN apt-get update \
         libpython3.8 \
         git \
 		make \
+		gcc \
         iproute2 \
         telnet \
         iputils-ping \

@@ -12,6 +12,7 @@ WORKDIR /tmp/
 RUN apt-get update \
     && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
     && apt-get -y install \
+		gcc \
         ca-certificates \
         git \
         lsb-release \
