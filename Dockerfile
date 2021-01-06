@@ -84,4 +84,3 @@ RUN mkdir -p /golang \
 ENV DEBIAN_FRONTEND=dialog
 ENV SHELL=/bin/bash
 
-ENTRYPOINT [ "bash" ]
