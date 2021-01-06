@@ -27,7 +27,7 @@ RUN apt-get update \
 # install Go
 RUN mkdir -p /golang \
     #
-    && curl -fsSL https://storage.googleapis.com/golang/go$GO_VERSION.$GOOS-$GOARCH.tar.gz | tar -C /golang -xzv \
+    && curl -fsSL https://golang.org/dl/go$GO_VERSION.$GOOS-$GOARCH.tar.gz | tar -C /golang -xzv \
     && GO111MODULE=on go get -v \
         golang.org/x/tools/gopls@latest \
         honnef.co/go/tools/...@latest \
