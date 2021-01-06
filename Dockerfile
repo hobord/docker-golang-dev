@@ -1,6 +1,6 @@
 FROM ubuntu:focal
 ENV DEBIAN_FRONTEND=noninteractive
-ARG GO_VERSION=1.15.3
+ARG GO_VERSION=1.15.6
 ENV GO_VERSION=$GO_VERSION \
     GOOS=linux \
     GOARCH=amd64 \
