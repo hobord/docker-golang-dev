@@ -27,33 +27,33 @@ RUN apt-get update \
 # install Go
 RUN mkdir -p /golang \
     #
-    && curl -fsSL https://golang.org/dl/go$GO_VERSION.$GOOS-$GOARCH.tar.gz | tar -C /golang -xzv \
-    && GO111MODULE=on go get -v \
-        golang.org/x/tools/gopls@latest \
-        honnef.co/go/tools/...@latest \
-        golang.org/x/tools/cmd/gorename@latest \
-        golang.org/x/tools/cmd/goimports@latest \
-        golang.org/x/tools/cmd/guru@latest \
-        golang.org/x/lint/golint@latest \
-        github.com/mdempsky/gocode@latest \
-        github.com/cweill/gotests/...@latest \
-        github.com/haya14busa/goplay/cmd/goplay@latest \
-        github.com/sqs/goreturns@latest \
-        github.com/josharian/impl@latest \
-        github.com/davidrjenni/reftools/cmd/fillstruct@latest \
-        github.com/ramya-rao-a/go-outline@latest  \
-        github.com/acroca/go-symbols@latest  \
-        github.com/godoctor/godoctor@latest  \
-        github.com/rogpeppe/godef@latest  \
-        github.com/zmb3/gogetdoc@latest \
-        github.com/fatih/gomodifytags@latest \
-	github.com/jstemmer/gotags@latest \
-        github.com/mgechev/revive@latest  \
-	github.com/vektra/mockery/.../@latest \
-	github.com/axw/gocov/...@latest \
-	github.com/AlekSi/gocov-xml@latest \
-        github.com/go-delve/delve/cmd/dlv@latest 2>&1 \
+    && curl -fsSL https://golang.org/dl/go$GO_VERSION.$GOOS-$GOARCH.tar.gz | tar -C /golang -xzv
+RUN go get golang.org/x/tools/gopls \
+        #        && go get -u honnef.co/go/tools \
+     && GO111MODULE=on go get -v \
+         golang.org/x/tools/cmd/goimports@latest \
+         golang.org/x/tools/cmd/guru@latest \
+         golang.org/x/lint/golint@latest \
+         github.com/mdempsky/gocode@latest \
+         honnef.co/go/tools/...@latest \
+         github.com/cweill/gotests/...@latest \
+         github.com/haya14busa/goplay/cmd/goplay@latest \
+         github.com/sqs/goreturns@latest \
+         github.com/josharian/impl@latest \
+         github.com/davidrjenni/reftools/cmd/fillstruct@latest \
+         github.com/ramya-rao-a/go-outline@latest  \
+         github.com/acroca/go-symbols@latest  \
+         github.com/godoctor/godoctor@latest  \
+         github.com/rogpeppe/godef@latest  \
+         github.com/zmb3/gogetdoc@latest \
+         github.com/fatih/gomodifytags@latest \
+         github.com/jstemmer/gotags@latest \
+         github.com/mgechev/revive@latest  \
+         github.com/vektra/mockery/v2/.../ \
+         github.com/axw/gocov \
+         github.com/AlekSi/gocov-xml 2>&1 \
     && GO111MODULE=off go get github.com/uudashr/gopkgs/v2/cmd/gopkgs 2>&1 \
+    && go get github.com/go-delve/delve/cmd/dlv 2>&1 \
     #
     # Install Go tools w/o module support
     && go get -v github.com/alecthomas/gometalinter 2>&1 \
