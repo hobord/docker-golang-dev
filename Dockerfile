@@ -75,6 +75,7 @@ RUN mkdir -p /golang \
     # Install grpc
     && GO111MODULE=on go get -u google.golang.org/grpc github.com/golang/protobuf/protoc-gen-go \
     #
+    && GO111MODULE=on go get github.com/twitchtv/twirp/protoc-gen-twirp \
     # Cleanup
     && rm -Rf /tmp/*
 
