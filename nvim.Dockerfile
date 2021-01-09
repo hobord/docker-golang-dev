@@ -1,6 +1,6 @@
 FROM ubuntu:focal
 ENV DEBIAN_FRONTEND=noninteractive
-ARG GO_VERSION=1.15.6
+ARG GO_VERSION=1.15.3
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
 ENV GO_VERSION=$GO_VERSION \
@@ -10,6 +10,8 @@ ENV GO_VERSION=$GO_VERSION \
     GOPATH=/golang/go-tools
 ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 ENV USERNAME=gropher
+
+ENV PATH=$PATH:/opt/nvim/bin/
 
 WORKDIR /tmp/
 RUN apt-get update \
@@ -21,6 +23,7 @@ RUN apt-get update \
         libpython3.8 \
         git \
 		make \
+		cmake \
 		gcc \
         iproute2 \
         telnet \
@@ -36,18 +39,17 @@ RUN apt-get update \
         ssh \
         sudo \
         ranger \
+		fzf \
 		tmux \
-        ctags \
-        wget \
-    && wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
-        && chmod +x ./nvim.appimage \
-        && ./nvim.appimage --appimage-extract \
-        && cp -a ./squashfs-root/* / \
-        && rm -Rf ./squashfs-root 
-    && update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 1 \
-    && update-alternatives --set editor /usr/bin/nvim \
-    && update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 1 \
-    && update-alternatives --set vi /usr/bin/nvim \
+		nodejs \
+		npm \
+		#    && update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1 \
+		#&& update-alternatives --set editor /usr/local/bin/vim \
+		#&& update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1 \
+		#&& update-alternatives --set vi /usr/local/bin/vim \
+	&& curl -L -o nvim.tgz https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz \
+	&& tar -xvvf ./nvim.tgz \
+	&& mv nvim-linux64 /opt/nvim \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
@@ -66,8 +68,8 @@ COPY --chown=1000:1000 --from=hobord/golang-dev /golang /golang
 # create user profile
 USER ${USERNAME} 
 COPY --chown=1000:1000 profile /home/${USERNAME}
-#RUN curl -fLo /home/${USERNAME}/.vim/autoload/plug.vim --create-dirs http://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
-    #    && vim +PlugInstall +qall 2> /dev/null 1>/dev/null 
+RUN curl -fLo /home/${USERNAME}/.config/nvim/autoload/plug.vim --create-dirs http://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
+    && nvim +PlugInstall +qall 2> /dev/null 1>/dev/null; exit 0 
 
 WORKDIR /workspace
 # Switch back to dialog for any ad-hoc use of apt-get
