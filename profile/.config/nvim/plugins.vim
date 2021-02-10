@@ -46,7 +46,7 @@ Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
 Plug 'kdheepak/lazygit.nvim'
 
-"Plug 'ekalinin/Dockerfile.vim'
+Plug 'ekalinin/Dockerfile.vim'
 "Plug 'plasticboy/vim-markdown'
 Plug 'rhysd/vim-gfm-syntax'
 Plug 'MTDL9/vim-log-highlighting'

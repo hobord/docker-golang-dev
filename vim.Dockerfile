@@ -43,7 +43,8 @@ RUN apt-get update \
         && chmod +x ./nvim.appimage \
         && ./nvim.appimage --appimage-extract \
         && cp -a ./squashfs-root/* / \
-        && rm -Rf ./squashfs-root 
+        && rm -Rf ./squashfs-root \
+        && rm nvim.appimage \
     && update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 1 \
     && update-alternatives --set editor /usr/bin/nvim \
     && update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 1 \
@@ -66,8 +67,8 @@ COPY --chown=1000:1000 --from=hobord/golang-dev /golang /golang
 # create user profile
 USER ${USERNAME} 
 COPY --chown=1000:1000 profile /home/${USERNAME}
-#RUN curl -fLo /home/${USERNAME}/.vim/autoload/plug.vim --create-dirs http://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
-    #    && vim +PlugInstall +qall 2> /dev/null 1>/dev/null 
+RUN curl -fLo /home/${USERNAME}/.config/nvim/autoload/plug.vim --create-dirs http://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
+        && nvim -u /home/${USERNAME}/.config/nvim/plugins.vim +PlugInstall +qall 2> /dev/null 1>/dev/null ; exit 0
 
 WORKDIR /workspace
 # Switch back to dialog for any ad-hoc use of apt-get
