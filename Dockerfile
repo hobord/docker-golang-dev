@@ -1,6 +1,6 @@
 FROM ubuntu:focal
 ENV DEBIAN_FRONTEND=noninteractive
-ARG GO_VERSION=1.15.6
+ARG GO_VERSION=1.15.8
 ENV GO_VERSION=$GO_VERSION \
     GOOS=linux \
     GOARCH=amd64 \
@@ -51,6 +51,8 @@ RUN go get golang.org/x/tools/gopls \
          github.com/mgechev/revive@latest  \
          github.com/vektra/mockery/v2/.../ \
          github.com/axw/gocov \
+         cuelang.org/go/cmd/cue \
+         cuelang.org/go/cue \
          github.com/AlekSi/gocov-xml 2>&1 \
     && GO111MODULE=off go get github.com/uudashr/gopkgs/v2/cmd/gopkgs 2>&1 \
     && go get github.com/go-delve/delve/cmd/dlv 2>&1 \
