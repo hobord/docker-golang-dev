@@ -30,10 +30,9 @@ RUN mkdir -p /golang \
     && curl -fsSL https://golang.org/dl/go$GO_VERSION.$GOOS-$GOARCH.tar.gz | tar -C /golang -xzv
 RUN go get golang.org/x/tools/gopls \
         #        && go get -u honnef.co/go/tools \
-     && GO111MODULE=on go get -v \
+    && GO111MODULE=on go get -v \
          golang.org/x/tools/cmd/goimports@latest \
          golang.org/x/tools/cmd/guru@latest \
-         golang.org/x/lint/golint@latest \
          github.com/mdempsky/gocode@latest \
          honnef.co/go/tools/...@latest \
          github.com/cweill/gotests/...@latest \
@@ -50,20 +49,15 @@ RUN go get golang.org/x/tools/gopls \
          github.com/jstemmer/gotags@latest \
          github.com/mgechev/revive@latest  \
          github.com/vektra/mockery/v2/.../ \
-         github.com/axw/gocov \
          cuelang.org/go/cmd/cue \
          cuelang.org/go/cue \
+         github.com/axw/gocov/... \
          github.com/AlekSi/gocov-xml 2>&1 \
     && GO111MODULE=off go get github.com/uudashr/gopkgs/v2/cmd/gopkgs 2>&1 \
     && go get github.com/go-delve/delve/cmd/dlv 2>&1 \
     #
-    # Install Go tools w/o module support
-    && go get -v github.com/alecthomas/gometalinter 2>&1 \
-    #
     # Install gocode-gomod
-    && go get -x -d github.com/stamblerre/gocode 2>&1 \
-    && go build -o gocode-gomod github.com/stamblerre/gocode \
-    && mv gocode-gomod $GOPATH/bin/ \
+    && go get -u github.com/stamblerre/gocode 2>&1 \
     #
     # Install golangci-lint
     && curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin 2>&1 \
